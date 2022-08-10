@@ -1,0 +1,36 @@
+[staticMenu mainMenu]
+code = "main-menu"
+==
+<header class="container-fluid py-4 position-relative">
+    <div class="container-lg d-flex justify-content-between align-items-center">
+        <div id="logo">
+            <a href="{{ 'homepage'|page }}" class="d-flex">
+                <img src="{{ 'assets/images/logo.svg'|theme }}" alt="logo">
+            </a>
+        </div>
+
+        <div id="menu-toggle" class="d-lg-none">
+            <a href="#offcanvas" class="d-flex" data-bs-toggle="offcanvas">
+                <i class="bi bi-list fs-48 lh-1 text-green"></i>
+            </a>
+        </div>
+
+        <div class="offcanvas-lg offcanvas-end" id="offcanvas">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title text-blue">Menu</h5>
+
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" data-bs-target="#offcanvas"></button>
+            </div>
+
+            <div class="offcanvas-body">
+                {% component "mainMenu" %}
+            </div>
+        </div>
+
+        <div class="d-none d-lg-block">
+            <a href="{{ 'homepage'|page }}/#kontaktujte-nas" class="btn btn-blue-light">
+                Kontaktujte nás
+            </a>
+        </div>
+    </div>
+</header>

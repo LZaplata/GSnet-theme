@@ -1,0 +1,28 @@
+[staticMenu footerMenu]
+code = "main-menu"
+==
+<footer class="container-fluid py-5">
+    <div class="container-lg">
+        <div class="row row-cols-1 row-cols-lg-3">
+            <div class="col text-gray fs-14 d-flex align-items-center justify-content-center justify-content-lg-start">
+                <img src="{{ 'assets/images/logo-footer.svg'|theme }}" alt="Logo" class="me-3">
+
+                &copy; {{ now|date("Y") }}, gsnet.cz
+            </div>
+
+            <div class="col mt-5 mt-lg-0 d-lg-flex align-items-lg-center justify-content-lg-center">
+                {% component "footerMenu" %}
+            </div>
+
+            <div class="socials col mt-5 text-center mt-lg-0 d-lg-flex justify-content-lg-end align-items-lg-center">
+                <a href="https://www.facebook.com/gsnet.cz" target="_blank" class="facebook d-inline-flex align-items-center justify-content-center bg-blue-light bg-blue-hover transition rounded-circle">
+                    <span class="d-flex w-100 h-100 bg-blue bg-white-hover transition"></span>
+                </a>
+
+                <a href="" target="_blank" class="twitter d-inline-flex align-items-center justify-content-center bg-blue-light bg-blue-hover transition rounded-circle ms-1">
+                    <span class="d-flex w-100 h-100 bg-blue bg-white-hover transition"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>

@@ -1,0 +1,77 @@
+<div class="container-fluid py-5 mt-xl-5 border-bottom border-1 border-gray-extralight" id="co-delame">
+    <div class="container-lg">
+        <div class="services row row-cols-1 g-5 pt-xl-5">
+            <div class="service odd col">
+                <div class="row g-4">
+                    <div class="col-12 col-md-6 d-flex align-items-center">
+                        <div>
+                            <h2 class="mb-4">
+                                Co děláme?
+                            </h2>
+
+                            <div>
+                                {% content "uvod/co-delame" %}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6 text-center d-md-flex align-items-md-center justify-content-md-end">
+                        <img src="{{ 'assets/images/services/01.webp'|theme }}"
+                             srcset="{{ 'assets/images/services/01@2x.webp'|theme }} 2x, {{ 'assets/images/services/01@3x.webp'|theme }} 3x"
+                             class="img-fluid w-sm-50 w-md-75">
+                    </div>
+                </div>
+            </div>
+
+            <div class="service even col pt-md-4 pt-xl-5">
+                <div class="row g-4">
+                    <div class="col-12 col-md-6 d-flex align-items-center order-md-1">
+                        <div>
+                            <h2 class="mb-4">
+                                Proč díky nám máte výhodu?
+                            </h2>
+
+                            <div>
+                                {% content "uvod/proc-diky-nam-mate-vyhodu" %}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6 order-md-0 text-center text-md-start d-md-flex align-items-center">
+                        <img src="{{ 'assets/images/services/02.webp'|theme }}"
+                             srcset="{{ 'assets/images/services/02@2x.webp'|theme }} 2x, {{ 'assets/images/services/02@3x.webp'|theme }} 3x"
+                             class="img-fluid w-sm-50 w-md-75 of-md-contain">
+                    </div>
+                </div>
+            </div>
+
+            <div class="service odd col pt-md-4 py-xl-5 mb-xl-5">
+                <div class="row g-4">
+                    <div class="col-12 col-md-6 d-flex align-items-center">
+                        <div>
+                            <h2 class="mb-4">
+                                Co nabízíme?
+                            </h2>
+
+                            <div>
+                                {% content "uvod/co-nabizime" %}
+                            </div>
+
+                            <p class="mt-4">
+                                <a href="{{ 'homepage'|page }}/#volna-mista" class="btn btn-blue-light">
+                                    Volná pracovní místa <i class="bi bi-arrow-down"></i>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6 text-center d-md-flex align-items-center justify-content-md-end">
+                        <img src="{{ 'assets/images/services/03.webp'|theme }}"
+                             srcset="{{ 'assets/images/services/03@2x.webp'|theme }} 2x, {{ 'assets/images/services/03@3x.webp'|theme }} 3x"
+                             class="img-fluid w-sm-50 w-md-75">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

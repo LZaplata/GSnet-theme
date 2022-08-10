@@ -1,0 +1,60 @@
+url = "/volna-mista/:slug"
+layout = "default"
+title = "Volné místo"
+
+[blogPost freePlace]
+slug = "{{ :slug }}"
+categoryPage = "free-place"
+==
+<?
+function onInit()
+{
+    $this["activeMenuItem"] = "free-places";
+}
+?>
+==
+<div class="container-fluid pt-4 pb-5 py-xl-5" id="free-place">
+    <div class="container-lg">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="{{ 'homepage'|page }}">
+                        Úvod
+                    </a>
+                </li>
+
+                <li class="breadcrumb-item">
+                    <a href="{{ 'homepage'|page }}/#volna-mista">
+                        Pozice
+                    </a>
+                </li>
+
+                <li class="breadcrumb-item active text-truncate">
+                    {{ post.title }}
+                </li>
+            </ol>
+        </nav>
+
+        <div class="mt-4 pt-1 mt-xl-5 pt-xl-0 mb-xl-4 richeditor">
+            {% component "freePlace" %}
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid py-5 bg-blue-dark text-white" id="kontaktujte-nas">
+    <div class="container-lg py-xl-5">
+        <h2 class="text-center text-white mb-4">
+            Zaujala vás tato pracovní nabídka?
+        </h2>
+
+        <p class="text-center mb-5">
+            Nechte nám na sebe kontakt a my se vám ozveme
+        </p>
+
+        <div class="row">
+            <div id="contact-form" class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3">
+                {% partial "contact-form" %}
+            </div>
+        </div>
+    </div>
+</div>

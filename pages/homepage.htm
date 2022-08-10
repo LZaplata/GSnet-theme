@@ -1,0 +1,81 @@
+url = "/"
+layout = "default"
+title = "Úvod"
+
+[blogPosts freePlaces]
+pageNumber = "{{ :page }}"
+categoryFilter = "volna-mista"
+postsPerPage = 3
+noPostsMessage = "Nenalezeny žádné příspěvky"
+sortOrder = "published_at asc"
+categoryPage = "free-place"
+postPage = "free-place"
+==
+<?php
+use RainLab\Blog\Models\Post;
+
+function onStart()
+{
+    $this["freePlaces"] = Post::whereRelation("categories", "slug", "volna-mista")->lists("title", "title");
+}
+
+function onLoadMore()
+{
+    $pageNumber = Input::get("page");
+
+    $this["freePlaces"]->setProperty("pageNumber", $pageNumber);
+    $this["freePlaces"]->onRun();
+}
+?>
+==
+{% partial "homepage/banner" %}
+{% partial "homepage/services" %}
+
+<div class="container-fluid py-5" id="volna-mista">
+    <div class="container-lg py-xl-5">
+        <h2 class="mb-4">
+            Volná pracovní místa
+        </h2>
+
+        <div class="row row-cols-1 g-4 row-cols-lg-2 g-xl-5">
+            <div class="col fs-20 fw-medium">
+                Proč se náš tým stal ve Škoda Auto tak úspěšný? Protože nám záleží na výběru a kvalitním rozvoji
+                našich kolegů.
+            </div>
+
+            <div class="col fs-18">
+                V současnosti hledáme zájemce o náročnou, ale zajímavou práci, kterým nabízíme možnost vlastní
+                seberealizace,  profesního růstu a účasti na významných projektech ve Škoda Auto. Vzhledem k velkému
+                množství projektů máme permanentně otevřeno několik pozic s různou úrovní požadované kvalifikace.
+            </div>
+        </div>
+
+        <div class="mt-5 pt-xl-5">
+            <div id="free-places" class="row row-cols-1 g-4 row-cols-md-2 row-cols-xl-3">
+                {% partial "homepage/free-places" %}
+            </div>
+        </div>
+
+        <div id="load-more" class="text-center">
+            {% partial "homepage/load-more" %}
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid py-5 bg-blue-dark text-white" id="kontaktujte-nas">
+    <div class="container-lg py-xl-5">
+        <h2 class="text-center text-white mb-4">
+            Zaujala vás něktará z nabídek?
+        </h2>
+
+        <p class="text-center mb-5">
+            Nechte nám na sebe kontakt a my se vám ozveme
+        </p>
+
+        <div class="row">
+            <div id="contact-form" class="col-12 col-md-10 offset-md-1 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3">
+                {% partial "contact-form" %}
+            </div>
+        </div>
+    </div>
+</div>

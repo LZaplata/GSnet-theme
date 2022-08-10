@@ -1,0 +1,243 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&display=swap');
+
+// 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
+@import "~bootstrap/scss/functions";
+
+// 2. Include any default variable overrides here
+$enable-negative-margins:       true;
+
+$link-decoration:               none;
+
+$theme-colors: (
+    "blue":                     #0f7abf,
+    "blue-light":               #ebf6fc,
+    "blue-dark":                #14142b,
+    "black":                    #000000,
+    "orange":                   #f05324,
+    "white":                    #ffffff,
+    "gray":                     #747793,
+    "gray-light":               #a0a3bd,
+    "gray-extralight":          #ecedf2,
+);
+
+$font-sizes: (
+    10:                         .625rem,
+    12:                         .75rem,
+    13:                         .8125rem,
+    14:                         .875rem,
+    16:                         1rem,
+    18:                         1.125rem,
+    20:                         1.25rem,
+    28:                         1.75rem,
+    32:                         2rem,
+    48:                         3rem,
+);
+
+$font-weights: (
+    "regular":                  400,
+    "medium":                   500,
+    "semibold":                 600,
+);
+
+$font-family-base:              "Poppins", sans-serif;
+$font-size-base:                map-get($font-sizes, 16);
+$font-weight-base:              map-get($font-weights, "regular");
+
+$border-radius:                 2.375rem;
+
+$line-height-base:              1.63;
+$line-height-sm:                1.42;
+
+$headings-font-family:          $font-family-base;
+$headings-color:                map-get($theme-colors, "blue-dark");
+$headings-font-weight:          $font-weight-base;
+$headings-line-height:          $line-height-sm;
+
+$h1-font-size:                  map-get($font-sizes, 48);
+$h2-font-size:                  map-get($font-sizes, 32);
+
+$body-color:                    map-get($theme-colors, "blue-dark");
+
+$link-color:                    map-get($theme-colors, "blue");
+
+$btn-font-size:                 $font-size-base;
+$btn-border-radius:             $border-radius;
+$btn-font-weight:               map-get($font-weights, "medium");
+$btn-focus-width:               0;
+$btn-border-width:              2px;
+$btn-padding-x:                 1.5rem;
+$btn-padding-y:                 .7rem;
+$btn-border-radius-lg:          2rem;
+$btn-font-size-lg:              $font-size-base;
+$btn-padding-y-lg:              19px;
+
+$btn-close-focus-shadow:        none;
+
+$input-bg:                      transparentize(map-get($theme-colors, "white"), .92);
+$input-border-color:            transparent;
+$input-border-radius:           8px;
+$input-border-width:            1px;
+$input-font-size:               map-get($font-sizes, 14);
+$input-font-weight:             map-get($font-weights, "normal");
+$input-placeholder-color:       transparentize(map-get($theme-colors, "white"), .55);
+$input-padding-x:               1rem;
+$input-padding-y:               1rem;
+$input-color:                   map-get($theme-colors, "white");
+$input-focus-border-color:      map-get($theme-colors, "white");
+$input-focus-bg:                transparentize(map-get($theme-colors, "white"), .86);
+
+$form-check-input-width:        1.5em;
+$form-check-input-border-radius:    4px;
+$form-check-input-border:       2px solid transparentize(map-get($theme-colors, "white"), .59);
+$form-check-input-bg:           map-get($theme-colors, "blue-dark");
+$form-check-input-focus-box-shadow: none;
+$form-check-input-focus-border: 2px solid transparentize(map-get($theme-colors, "white"), .59);
+$form-check-input-checked-bg-color: map-get($theme-colors, "blue");
+
+$nav-link-color:                map-get($theme-colors, "blue-dark");
+$nav-link-hover-color:          map-get($theme-colors, "blue");
+$nav-link-font-size:            map-get($font-sizes, 16);
+$nav-link-font-weight:          map-get($font-weights, "medium");
+$nav-link-padding-x:            0;
+$nav-link-padding-y:            0;
+
+$nav-pills-link-active-color:   map-get($theme-colors, "blue");
+$nav-pills-link-active-bg:      transparent;
+
+$offcanvas-bg-color:            map-get($theme-colors, "blue");
+$offcanvas-color:               map-get($theme-colors, "white");
+
+$badge-border-radius:           6px;
+$badge-padding-x:               12px;
+$badge-padding-y:               7px;
+$badge-font-size:               map-get($font-sizes, 12);
+$badge-font-weight:             map-get($font-weights, "medium");
+
+$breadcrumb-font-size:          map-get($font-sizes, 18);
+$breadcrumb-active-color:       map-get($theme-colors, "gray-light");
+$breadcrumb-divider-color:      map-get($theme-colors, "blue");
+$breadcrumb-item-padding-x:     13px;
+
+// 3. Include remainder of required Bootstrap stylesheets
+@import "~bootstrap/scss/variables";
+
+// 4. Include any default map overrides here
+$utilities:
+(
+    "font-size": (
+        property: font-size,
+        class: fs,
+        values: $font-sizes,
+        rfs: true,
+    ),
+    "font-size-static": (
+        property: font-size,
+        class: fss,
+        values: $font-sizes,
+    ),
+    "font-weight": (
+        property: font-weight,
+        class: fw,
+        values: $font-weights,
+    ),
+    "background-color-hover": (
+        property: background-color,
+        class: bg,
+        values: map-loop($theme-colors, rgba-css-var, "$key", "bg"),
+        local-vars: (
+            bg-opacity: 1,
+        ),
+        state: hover,
+    ),
+    "color-hover": (
+        property: color,
+        class: text,
+        values: map-loop($theme-colors, rgba-css-var, "$key", "text"),
+        local-vars: (
+            text-opacity: 1,
+        ),
+        state: hover,
+    ),
+    "height": (
+        property: height,
+        class: h,
+        values: (
+            25: 25%,
+            50: 50%,
+            75: 75%,
+            100: 100%,
+            auto: auto
+        ),
+        responsive: true,
+    ),
+    "width": (
+        property: width,
+        class: w,
+        values: (
+            25: 25%,
+            50: 50%,
+            75: 75%,
+            100: 100%,
+            auto: auto
+        ),
+        responsive: true,
+    ),
+    "object-fit": (
+        property: object-fit,
+        class: of,
+        values: (
+            cover: cover,
+            contain: contain,
+            none: none,
+        ),
+        responsive: true,
+    ),
+    "transition": (
+        property: transition,
+        class: transition,
+        values: (
+            null: all var(--bs-transition-duration) var(--bs-transition-function)
+        ),
+        local-vars: (
+            transition-property: all,
+            transition-duration: .2s,
+            transition-function: ease-in-out
+        ),
+    )
+);
+
+// 5. Include remainder of required parts
+@import "~bootstrap/scss/maps";
+@import "~bootstrap/scss/mixins";
+@import "~bootstrap/scss/root";
+
+// 6. Optionally include any other parts as needed
+@import "~bootstrap/scss/utilities";
+@import "~bootstrap/scss/reboot";
+@import "~bootstrap/scss/type";
+@import "~bootstrap/scss/images";
+@import "~bootstrap/scss/containers";
+@import "~bootstrap/scss/grid";
+@import "~bootstrap/scss/helpers";
+@import "~bootstrap/scss/buttons";
+@import "~bootstrap/scss/nav";
+@import "~bootstrap/scss/offcanvas";
+@import "~bootstrap/scss/close";
+@import "~bootstrap/scss/forms";
+@import "~bootstrap/scss/alert";
+@import "~bootstrap/scss/badge";
+@import "~bootstrap/scss/breadcrumb";
+
+// 7. Optionally include utilities API last to generate classes based on the Sass map in `_utilities.scss`
+@import "~bootstrap/scss/utilities/api";
+
+// 8. Add additional custom code here
+:root {
+    @each $size, $value in $font-sizes {
+        --#{$prefix}font-size-#{$size}: #{$value};
+    }
+
+    @each $weight, $value in $font-weights {
+        --#{$prefix}font-weight-#{$weight}: #{$value};
+    }
+};

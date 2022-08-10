@@ -1,0 +1,42 @@
+url = "/clanky/:slug"
+layout = "default"
+title = "Článek"
+
+[blogPost post]
+slug = "{{ :slug }}"
+categoryPage = "articles"
+==
+<?
+function onInit()
+{
+    $this["activeMenuItem"] = "articles";
+}
+?>
+==
+<div class="container-fluid pt-4 pb-5 py-xl-5 border-bottom border-1 border-gray-extralight" id="articles-post">
+    <div class="container-lg">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="{{ 'homepage'|page }}">
+                        Úvod
+                    </a>
+                </li>
+
+                <li class="breadcrumb-item">
+                    <a href="{{ 'articles'|page }}">
+                        Články
+                    </a>
+                </li>
+
+                <li class="breadcrumb-item active text-truncate">
+                    {{ post.title }}
+                </li>
+            </ol>
+        </nav>
+
+        <div class="mt-4 pt-1 mt-xl-5 pt-xl-0 mb-xl-4 richeditor">
+            {% component "post" %}
+        </div>
+    </div>
+</div>

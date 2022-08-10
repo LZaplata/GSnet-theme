@@ -1,0 +1,8 @@
+{
+    "name": "lzaplata/gsnet-theme",
+    "type": "october-theme",
+    "description": "Theme for gsnet.cz company",
+    "require": {
+        "composer/installers": "~1.0"
+    }
+}

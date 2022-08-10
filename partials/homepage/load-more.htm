@@ -1,0 +1,13 @@
+{% set pageNumber = this.page.components['freePlaces'].property('pageNumber') ?
+    this.page.components['freePlaces'].property('pageNumber') + 1 :
+    2 %}
+
+{% if pageNumber <= this.page.components['freePlaces'].posts.lastPage %}
+    <button class="btn btn-blue-light mt-5"
+            data-request="onLoadMore"
+            data-request-update="'homepage/free-places': '@#free-places', 'homepage/load-more': '#load-more'"
+            data-request-data="page: {{ pageNumber }}">
+
+        Zobrazit další <i class="bi bi-arrow-down"></i>
+    </button>
+{% endif %}

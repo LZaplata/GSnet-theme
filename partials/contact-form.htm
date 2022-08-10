@@ -1,0 +1,114 @@
+{{ form_ajax("onContactFormSend",
+    {
+        "validate": true,
+        "class": "row row-cols-1 g-4",
+        "novalidate": true,
+        "files": true,
+        "flash": true,
+        "update": {
+            "contact-form": "#contact-form"
+        }
+    }) }}
+
+    {% if freePlaces %}
+        <div class="col">
+            {{ form_label("free_place", "O jakou pozici máte zájem?", {
+                "class": "form-label fs-14"}) }} <span class="text-orange">*</span>
+
+            {{ form_select("free_place", freePlaces, null, {
+                "class": "form-select"}) }}
+        </div>
+    {% else %}
+            {{ form_hidden("free_place", post.title) }}
+    {% endif %}
+
+    <div class="col">
+        {{ form_label("name", "Jméno", {
+            "class": "form-label fs-14"}) }} <span class="text-orange">*</span>
+
+        {{ form_text("name", null, {
+            "placeholder": "Jméno",
+            "class": "form-control"}) }}
+
+        <div data-validate-for="name"></div>
+    </div>
+
+    <div class="col">
+        {{ form_label("surname", "Příjmení", {
+            "class": "form-label fs-14"}) }} <span class="text-orange">*</span>
+
+        {{ form_text("surname", null, {
+            "placeholder": "Příjmení",
+            "class": "form-control"}) }}
+
+        <div data-validate-for="surname"></div>
+    </div>
+
+    <div class="col">
+        {{ form_label("email", "E-mail", {
+            "class": "form-label fs-14"}) }} <span class="text-orange">*</span>
+
+        {{ form_text("email", null, {
+            "placeholder": "@",
+            "class": "form-control"}) }}
+
+        <div data-validate-for="email"></div>
+    </div>
+
+    <div class="col">
+        {{ form_label("phone", "Telefon", {
+            "class": "form-label fs-14"}) }}
+
+        {{ form_text("phone", null, {
+            "placeholder": "+420",
+            "class": "form-control"}) }}
+    </div>
+
+    <div class="col">
+        {{ form_label("linkedin", "LinkedIn URL", {
+            "class": "form-label fs-14"}) }}
+
+        {{ form_text("linkedin", null, {
+            "placeholder": "https://linkedin.com/",
+            "class": "form-control"}) }}
+    </div>
+
+    <div class="col">
+        {{ form_label("info", "Krátké info o vás", {
+            "class": "form-label fs-14"}) }}
+
+        {{ form_textarea("info", null, {
+            "placeholder": "Napište nám, co umíte, nebo v čem vynikáte",
+            "class": "form-control"}) }}
+    </div>
+
+    <div class="col input-group d-flex align-items-center">
+        <i class="bi bi-paperclip me-2"></i>
+
+        {{ form_label("attachment", "Přiložit životopis (PDF)", {
+            "class": "input-group-text fs-14 bg-transparent p-0"}) }}
+
+        {{ form_file("attachment", {
+            "class": "form-control position-absolute invisible p-0"}) }}
+
+        <span class="attachment-name d-flex mt-2 fs-12 w-100"></span>
+    </div>
+
+    <div class="col">
+        <div class="form-check d-flex align-items-center">
+            {{ form_checkbox("gdpr", 1, null, {
+                "id": "gdpr",
+                "class": "form-check-input me-3"}) }}
+
+            <label for="gdpr" class="form-chech-label fs-14">
+                Souhlasím se zpracováním <a href="" class="link-white text-decoration-underline">osobních údajů</a>
+            </label>
+        </div>
+    </div>
+
+    <div class="col">
+        <button type="submit" class="btn btn-white btn-lg d-flex align-items-center justify-content-center w-100">
+            Odeslat formulář <i class="bi bi-send fss-20 lh-1 ms-3"></i>
+        </button>
+    </div>
+{{ form_close() }}

@@ -1,0 +1,15 @@
+{% set post = __SELF__.post %}
+
+<div class="image">
+    {% set image = post.featured_images.first %}
+
+    <img src="{{ image.thumb(1296, 500, {"mode": "crop"}) }}" alt="{{ image.title }}" class="img-fluid of-cover">
+</div>
+
+<h1 class="mt-4 lh-base mt-xl-5 mb-xl-4 col-xxl-10 offset-xxl-1">
+    {{ post.title }}
+</h1>
+
+<div class="col-xxl-10 offset-xxl-1">
+    {{ post.content_html|raw }}
+</div>

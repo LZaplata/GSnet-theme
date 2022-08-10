@@ -1,0 +1,12 @@
+name: GSnet
+description: 'Theme for gsnet.cz company'
+author: 'Lukáš Záplata'
+homepage: ''
+authorCode: LZaplata
+code: gsnet
+parent: ''
+database: '0'
+require:
+    - rainlab.blog
+    - lzaplata.extensions
+    - initbiz.seostorm

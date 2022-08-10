@@ -1,0 +1,35 @@
+url = "/o-nas"
+layout = "default"
+title = "O nás"
+==
+<div class="container-fluid pt-4 pb-5 py-xl-5 border-bottom border-1 border-gray-extralight" id="about-us">
+    <div class="container-lg">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="{{ 'homepage'|page }}">
+                        Úvod
+                    </a>
+                </li>
+
+                <li class="breadcrumb-item active">
+                    O nás
+                </li>
+            </ol>
+        </nav>
+
+        <div class="image mt-4 pt-1 mt-xl-5 pt-xl-0 mb-xl-4">
+            <img src="{{ 'assets/images/banner/about-us.webp'|theme }}"
+                 srcset="{{ 'assets/images/banner/about-us@2x.webp'|theme }} 2x, {{ 'assets/images/banner/about-us@3x.webp'|theme }} 3x"
+                 class="img-fluid of-cover w-100">
+        </div>
+
+        <h1 class="mt-4 mt-xl-5 mb-xl-4 col-xxl-10 offset-xxl-1">
+            {{ this.page.title }}
+        </h1>
+
+        <div class="col-xxl-10 offset-xxl-1 richeditor">
+            {% content "o-nas" %}
+        </div>
+    </div>
+</div>

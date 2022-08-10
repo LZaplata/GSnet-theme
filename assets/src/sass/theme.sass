@@ -1,0 +1,334 @@
+@import "custom"
+
+.btn-blue-light
+    --bs-btn-color: var(--bs-blue)
+    --bs-btn-hover-color: var(--bs-white)
+    --bs-btn-hover-bg: var(--bs-blue)
+
+
+.btn-outline-white
+    --bs-btn-hover-color: var(--bs-blue)
+
+.btn-white
+    --bs-btn-color: var(--bs-blue)
+    --bs-btn-hover-color: var(--bs-blue)
+    --bs-btn-hover-bg: var(--bs-blue-light)
+
+body
+    scroll-behavior: smooth
+    overflow-x: hidden !important
+
+header
+    .nav
+        li
+            a
+                &.active
+                    &:after
+                        content: ""
+                        height: 2px
+                        width: 100%
+                        position: absolute
+                        bottom: -5px
+                        left: 0
+                        background: #d8f1ff
+
+    #offcanvas
+        .offcanvas-body
+            @include media-breakpoint-down(lg)
+                .nav
+                    li
+                        .nav-link
+                            --bs-nav-link-color: var(--bs-white)
+                            --bs-nav-link-font-size: var(--bs-font-size-28)
+                            --bs-nav-pills-link-active-color: var(--bs-blue-light)
+                            text-decoration: none !important
+
+#banner
+    .text
+        z-index: 2
+        position: relative
+
+        @include media-breakpoint-down(lg)
+            padding-left: map-get($spacers, 4)
+            padding-right: map-get($spacers, 4)
+
+        @include media-breakpoint-up(lg)
+            position: absolute
+            left: 50%
+            top: 40%
+            transform: translateX(-50%) translateY(-50%)
+
+        & > div
+            @include media-breakpoint-only(xxl)
+                width: 41% !important
+
+    .image
+        z-index: 1
+
+        picture
+            img
+                visibility: hidden
+
+    .more
+        z-index: 2
+        position: relative
+
+        @include media-breakpoint-down(lg)
+            padding-left: map-get($spacers, 4)
+            padding-right: map-get($spacers, 4)
+
+        @include media-breakpoint-up(xl)
+            position: absolute
+            left: 50%
+            bottom: 20px
+            transform: translateX(-50%)
+
+    .gradient
+        background-image: linear-gradient(to bottom, var(--bs-white), var(--bs-blue-light))
+        height: 100%
+        z-index: 0
+
+        @include media-breakpoint-up(xl)
+            height: calc(100% - 20px)
+
+#co-delame
+    .services
+        .service
+            background-image: url("../images/dots.svg")
+            background-repeat: no-repeat
+            background-position-x: center
+            background-position-y: bottom
+
+            @include media-breakpoint-up(md)
+                background-position-x: right
+                background-position-y: center
+
+                &.even
+                    background-position-x: left
+
+            ul
+                margin-bottom: 0
+                padding-left: 0
+                position: relative
+
+                li
+                    list-style-type: none
+                    padding-left: 35px
+
+                    &:before
+                        content: "\F26B"
+                        font-family: "bootstrap-icons"
+                        position: absolute
+                        left: 0
+                        color: var(--bs-blue)
+
+                    & + li
+                        margin-top: map-get($spacers, 3)
+
+#volna-mista
+    #free-places
+        .place
+            & > div
+                transition: $transition-base
+
+                h3
+                    transition: $transition-base
+
+                .content
+                    --bs-text-opacity: .8 !important
+                    transition: $transition-base
+
+                    .btn-outline-white
+                        --bs-btn-border-color: rgba(var(--bs-white-rgb), .35)
+                        transition: $transition-base
+
+                &:hover
+                    box-shadow: 0 30px 60px -1px rgba(var(--bs-gray-rgb), 0.25)
+
+                    h3
+                        text-decoration: underline
+                        text-underline-offset: 5px
+
+                    .content
+                        --bs-text-opacity: 1 !important
+
+#kontaktujte-nas
+    form
+        .form-select
+            background-image: url("../images/icons/caret-down.svg")
+
+        .form-select, .form-control
+            &:focus
+                box-shadow: none !important
+
+        .form-select
+            option
+                background-color: var(--bs-black)
+                color: var(--bs-white)
+
+        .input-group
+            &-text
+                cursor: pointer
+
+            input[type=file]
+                width: .1px
+                height: .1px
+
+        .form-check
+            label
+                .text-decoration-underline
+                    text-underline-offset: 3px
+
+footer
+    .nav
+        li
+            a
+                &.active
+                    &:after
+                        content: ""
+                        height: 2px
+                        width: 100%
+                        position: absolute
+                        bottom: -5px
+                        left: 0
+                        background: #d8f1ff
+
+    .socials
+        a
+            width: 40px
+            height: 40px
+
+            span
+                -webkit-mask-position-x: center
+                -webkit-mask-position-y: center
+                mask-repeat: no-repeat
+                -webkit-mask-repeat: no-repeat
+
+            &.facebook
+                span
+                    mask-image: url("../images/icons/facebook.svg")
+                    -webkit-mask-image: url("../images/icons/facebook.svg")
+
+            &.twitter
+                span
+                    mask-image: url("../images/icons/twitter.svg")
+                    -webkit-mask-image: url("../images/icons/twitter.svg")
+
+.breadcrumb
+    &-item
+        + .breadcrumb-item
+            &:before
+                content: url("../images/icons/caret-right.svg")
+                display: flex
+                align-items: center
+                height: 100%
+
+        a
+            text-decoration: underline
+            text-underline-offset: 5px
+
+#articles
+    #posts
+        .post
+            h2
+                transition: $transition-base
+                line-height: 1.32
+
+            .image
+                border-radius: 20px
+
+                img
+                    transition: $transition-base
+
+            .more
+                a
+                    span
+                        transition: $transition-base
+
+                    &:hover
+                        span
+                            text-decoration: underline
+                            text-underline-offset: 3px
+
+            & > div
+                &:hover
+                    .image
+                        img
+                            transform: scale(1.05)
+
+                    h2
+                        text-decoration: underline
+                        color: var(--bs-blue)
+                        text-underline-offset: 6px
+
+    &-post
+        .breadcrumb
+            &-item
+                &.active
+                    max-width: 180px
+
+                    @include media-breakpoint-up(sm)
+                        max-width: 400px
+
+                    @include media-breakpoint-up(md)
+                        max-width: none
+
+        .image
+            img
+                border-radius: 20px
+
+                @include media-breakpoint-only(xs)
+                    height: 200px
+
+.richeditor
+    p, ul
+        margin-bottom: map-get($spacers, 4)
+
+        a
+            text-decoration: underline
+            text-underline-offset: 3px
+
+    ul
+        list-style: none
+        padding: 0
+
+        li
+            padding-left: 1rem
+            position: relative
+
+            & + li
+                margin-top: 12px
+
+            &:before
+                content: "\2022"
+                position: absolute
+                left: 0
+                position: absolute
+                color: var(--bs-blue)
+
+#free-place
+    .breadcrumb
+        &-item
+            &.active
+                max-width: 180px
+
+                @include media-breakpoint-up(sm)
+                    max-width: 400px
+
+                @include media-breakpoint-up(md)
+                    max-width: none
+
+    .image
+        img
+            border-radius: 20px
+
+            @include media-breakpoint-only(xs)
+                height: 200px
+
+#about-us
+    .image
+        img
+            border-radius: 20px
+
+            @include media-breakpoint-only(xs)
+                height: 200px

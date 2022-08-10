@@ -1,0 +1,97 @@
+[staticMenu menu]
+code = "main-menu"
+
+[staticPage]
+useContent = 1
+default = 1
+
+[seo]
+==
+<?
+use October\Rain\Support\Facades\Mail;
+use October\Rain\Support\Facades\Flash;
+
+function onContactFormSend()
+{
+    $rules = [
+        "name" => "required",
+        "surname" => "required",
+        "email" => "required|email:rfc,dns",
+        "gdpr" => "required",
+    ];
+
+    $messages = [
+        "name.required" => "Vyplňte prosím jméno",
+        "surname.required" => "Vyplňte prosím příjmení",
+        "email.required" => "Vyplňte prosím e-mail",
+        "email.email" => "Vyplňte prosím správný formát e-mailu",
+        "gdpr.required" => "Musíte souhlasit se zpracováním osobních údajů",
+    ];
+
+    $validation = Validator::make(Input::all(), $rules, $messages);
+
+    if ($validation->fails()) {
+        throw new ValidationException($validation);
+    } else {
+        Mail::send("lzaplata.gsnet::mail.notification", Input::all(), function($message) {
+            $message->to("zap@hucr.cz");
+
+            if (Input::hasFile("attachment") && Input::file("attachment")->isValid()) {
+                $message->attach(Input::file("attachment"), [
+                    "as" => Input::file("attachment")->getClientOriginalName(),
+                ]);
+            }
+        });
+
+        Flash::success("Kontaktní formulář byl úspěšně odeslán");
+    }
+}
+?>
+==
+<!DOCTYPE html>
+<html class="h-100" lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        {% component "seo" %}
+
+        <link rel="stylesheet" href="{{ [
+            'assets/css/theme.css',
+            'assets/css/bootstrap-icons.css',
+            'assets/css/swiper-bundle.css',
+            'assets/css/animate.css',
+        ]|theme }}" />
+    </head>
+
+    <body class="d-flex flex-column h-100">
+        {% flash %}
+            <p data-control="flash-message"
+                class="flash-message fade {{ type }}"
+                data-interval="5">
+
+                {{ message }}
+            </p>
+        {% endflash %}
+
+        {% partial "header" %}
+
+        <main class="position-relative">
+            {% page %}
+        </main>
+
+        {% partial "footer" %}
+
+        <script src="{{ [
+            'assets/js/jquery.min.js',
+            'assets/js/popper.js',
+            'assets/js/swiper-bundle.js',
+            'assets/js/bootstrap.js',
+            'assets/js/wow.min.js',
+            'assets/js/theme.js',
+        ]|theme }}"></script>
+
+        {% framework extras %}
+    </body>
+</html>

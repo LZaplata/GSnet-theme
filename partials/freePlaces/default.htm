@@ -1,0 +1,29 @@
+{% set posts = __SELF__.posts %}
+
+{% for post in posts %}
+    <div class="place col">
+        <div class="bg-blue p-4 rounded-4 position-relative">
+            <h3 class="text-white mb-4 mt-2">
+                {{ post.title }}
+            </h3>
+
+            <div class="content text-white">
+                {% if post.categories.where("slug", "doporucujeme").count > 0 %}
+                    <p class="mb-3">
+                        <span class="badge text-bg-white text-orange d-inline-flex align-items-center">
+                            <img src="{{ 'assets/images/icons/crown.svg'|theme }}" alt="crown" class="me-2"> Doporučujeme
+                        </span>
+                    </p>
+                {% endif %}
+
+                {{ post.excerpt|raw }}
+
+                <p class="mb-0">
+                    <a href="{{ post.url }}" class="btn btn-outline-white mt-3 mb-2 stretched-link">
+                        Více k pozici
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+{% endfor %}

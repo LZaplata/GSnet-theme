@@ -1,0 +1,51 @@
+url = "/clanky"
+layout = "default"
+title = "Články"
+
+[blogPosts posts]
+categoryFilter = "clanky"
+postsPerPage = 9
+noPostsMessage = "Nenalezeny žádné příspěvky"
+sortOrder = "published_at desc"
+categoryPage = "articles"
+postPage = "articles-post"
+==
+<?php
+function onLoadMore()
+{
+    $pageNumber = Input::get("page");
+
+    $this["posts"]->setProperty("pageNumber", $pageNumber);
+    $this["posts"]->onRun();
+}
+?>
+==
+<div class="container-fluid pt-4 pb-5 py-xl-5 border-bottom border-1 border-gray-extralight" id="articles">
+    <div class="container-lg">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item">
+                    <a href="{{ 'homepage'|page }}">
+                        Úvod
+                    </a>
+                </li>
+
+                <li class="breadcrumb-item active">
+                    Články
+                </li>
+            </ol>
+        </nav>
+
+        <h1 class="mt-4 pt-4 mb-4 mt-xl-5 mb-xl-5">
+            {{ this.page.title }}
+        </h1>
+
+        <div id="posts" class="row row-cols-1 gx-4 gy-5 row-cols-sm-2 row-cols-lg-3">
+            {% partial "articles/posts" %}
+        </div>
+
+        <div id="load-more" class="pb-xl-4">
+            {% partial "articles/load-more" %}
+        </div>
+    </div>
+</div>
